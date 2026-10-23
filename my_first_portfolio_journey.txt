@@ -3,3 +3,17 @@ Today's objective
 Confirm your tools work, check your AWS account, and establish a clean starting point.
 Highlight of today was remembering that things work differently on Windows. I kept running different commands to verify different work environments till I realized the commands weren’t Windows specific. Good to be back lol. 
 Oh by the way, I found some DevOps “games” online and it should replace my candy crush time allotment soon *wink
+
+
+Day 2 23 Oct 2026 - GitHub repository and first commit
+Created a repository, connected local project folder created yesterday to Git. 
+ALWAYS REMEMBER YOUR .gitignore, this is a very important step because Terraform state and variable files can contain sensitive information. 
+A .gitignore reduces the risk of accidentally committing them, but it does not protect files that are already tracked. Always review your files before committing. 
+It’s like principle of least privilege in AWS IAM. Peolple will only have access to what you want them to access.
+Practical steps: 
+Create a local file, 
+Create a GitHub repo for the file, 
+Initialize git, add files, commit, 
+Link local repo(files/folder) to GitHub , 
+Push local files to GitHub repo. 
+I used Termius, it requested authentication on my GitHub account before pushing my local repo. It’s the first time I’m noticing any terminal do that. So I learnt GitHub does that sometimes. It’s not terminal specific.
