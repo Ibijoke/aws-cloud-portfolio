@@ -1,0 +1,5 @@
+Day 1 22 Oct 2026 — Check your environment and prepare safely
+Today's objective
+Confirm your tools work, check your AWS account, and establish a clean starting point.
+Highlight of today was remembering that things work differently on Windows. I kept running different commands to verify different work environments till I realized the commands weren’t Windows specific. Good to be back lol. 
+Oh by the way, I found some DevOps “games” online and it should replace my candy crush time allotment soon *wink
