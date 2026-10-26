@@ -1,39 +1,54 @@
-# AWS Cloud Portfolio
+﻿# AWS Cloud Portfolio
 
 ## Project Overview
 
-This project demonstrates how to build and deploy a static website on AWS using Terraform for infrastructure as code and GitHub Actions for continuous integration and deployment.
+This repository documents a hands-on cloud engineering portfolio project.
+The goal is to build and deploy a static portfolio website on AWS using
+Infrastructure as Code and an automated deployment workflow.
 
-## Project Goals
+The project is being developed incrementally, with an emphasis on
+understanding each component, testing changes, documenting decisions,
+and following security and cost-management best practices.
 
-- Provision cloud infrastructure using Terraform.
-- Store application code in Git and GitHub.
-- Automate deployment using GitHub Actions.
-- Apply security and least-privilege principles.
-- Document testing, troubleshooting, cost awareness, and cleanup.
+## Current Status
 
-## Planned Technologies
+- [x] Initial Git and GitHub repository setup
+- [x] Initial portfolio website created using HTML and CSS
+- [x] Website files committed and pushed to GitHub
+- [ ] AWS hosting infrastructure implemented with Terraform
+- [ ] Website deployed and tested on AWS
+- [ ] GitHub Actions deployment workflow configured
+- [ ] Secure GitHub-to-AWS authentication configured using OIDC
+- [ ] Final architecture and deployment documentation completed
 
-- Amazon Web Services (AWS)
-- Terraform
-- Git and GitHub
-- GitHub Actions
-- HTML and CSS
+## Technologies
 
-## Architecture
+| Technology | Purpose |
+|---|---|
+| HTML | Website structure and content |
+| CSS | Website styling and responsive layout |
+| Git | Version control |
+| GitHub | Source code hosting and collaboration |
+| AWS | Planned cloud hosting platform |
+| Terraform | Planned infrastructure as code |
+| GitHub Actions | Planned continuous integration and deployment |
+| AWS IAM and OIDC | Planned access control for automated deployment |
 
-Architecture documentation will be added as the project develops.
+## Repository Structure
 
-## Deployment
+```text
+aws-cloud-portfolio/
+├── .github/
+├── terraform/
+├── website/
+│   ├── index.html
+│   └── styles.css
+├── .gitignore
+├── README.md
+└── DAY1-Notes.md
+## Project Status and Limitations
 
-Deployment instructions will be added after the infrastructure and workflow have been implemented and tested.
+This project is under development. AWS infrastructure, cloud deployment,
+and automated CI/CD should be considered planned until they have been
+implemented and verified.
 
-## Security and Cost
-
-No credentials, access keys, passwords, Terraform state files, or other secrets should be committed to this repository.
-
-AWS resources will be configured and reviewed with cost awareness. Resources created for testing will be cleaned up when no longer needed.
-
-## Project Status
-
-In progress � initial repository setup.
