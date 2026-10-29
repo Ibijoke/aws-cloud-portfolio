@@ -21,3 +21,7 @@ override.tf.json
 .DS_Store
 Thumbs.db
 .vscode/
+
+# Personal study materials - keep local
+/Daily documentation/
+/my_portfolio_journey
