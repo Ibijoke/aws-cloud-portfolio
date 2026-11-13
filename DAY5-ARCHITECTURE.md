@@ -42,3 +42,36 @@ Deploy the portfolio website using AWS, Terraform, and GitHub Actions.
 ## Current Status
 
 This is a proposed design. The AWS resources have not yet been created or tested as part of this plan.
+
+
+
+
+## Day 15 — AWS Infrastructure Deployment Verification
+
+### Infrastructure deployed
+- AWS S3 bucket
+- S3 versioning and encryption
+- S3 Block Public Access
+- S3 ownership controls
+- CloudFront distribution
+- CloudFront Origin Access Control (OAC)
+- Restrictive S3 bucket policy
+
+### Security configuration
+- S3 public access blocked.
+- S3 encryption enabled using AES-256.
+- Bucket versioning enabled.
+- CloudFront uses signed requests through OAC.
+- Bucket policy grants CloudFront s3:GetObject access.
+- No public bucket access is granted.
+
+### Deployment verification
+- AWS account and region verified.
+- S3 bucket existence verified.
+- CloudFront distribution status checked.
+- OAC configuration checked.
+- Terraform configuration validated.
+- Terraform plan reviewed.
+
+### Next milestone
+Upload website files to the private S3 bucket and test delivery through CloudFront.
