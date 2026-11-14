@@ -75,3 +75,34 @@ This is a proposed design. The AWS resources have not yet been created or tested
 
 ### Next milestone
 Upload website files to the private S3 bucket and test delivery through CloudFront.
+
+
+## Day 16 — Website Deployment to Amazon S3
+
+### Deployment objective
+Upload the static website files to the private Amazon S3 bucket.
+
+### Files deployed
+- index.html
+- styles.css
+
+### Deployment method
+AWS CLI using the `aws s3 sync` command.
+
+### S3 destination
+aws-cloud-portfolio-058264072079-website
+
+### Verification
+- Confirmed AWS account and region.
+- Previewed upload using --dryrun.
+- Uploaded website files to S3.
+- Verified uploaded objects using aws s3 ls.
+- Inspected object metadata using head-object.
+
+### Security
+- S3 Block Public Access remains enabled.
+- No public-read ACL was applied.
+- CloudFront OAC remains the authorised access mechanism.
+
+### Next milestone
+Test website delivery through the CloudFront distribution.
