@@ -106,3 +106,34 @@ aws-cloud-portfolio-058264072079-website
 
 ### Next milestone
 Test website delivery through the CloudFront distribution.
+
+
+## Day 17 — CloudFront Website Delivery Testing
+
+### Objective
+Verify that the static website is accessible through CloudFront.
+
+### Website endpoint
+https://dxlisw2u97auo.cloudfront.net
+
+### Tests performed
+- Homepage HTTP response checked.
+- HTML content retrieval tested.
+- CSS delivery tested.
+- CloudFront distribution status verified.
+- Default root object verified.
+- Direct anonymous S3 object access tested.
+
+### Security verification
+- S3 bucket remains private.
+- CloudFront accesses S3 through Origin Access Control.
+- Direct anonymous S3 access is denied.
+
+### Troubleshooting knowledge
+- HTTP status codes.
+- CloudFront caching.
+- S3 AccessDenied errors.
+- Browser Developer Tools and Network inspection.
+
+### Next milestone
+Study CloudFront error handling and understand how to diagnose website delivery failures.
