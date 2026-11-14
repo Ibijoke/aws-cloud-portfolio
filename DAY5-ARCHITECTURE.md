@@ -137,3 +137,44 @@ https://dxlisw2u97auo.cloudfront.net
 
 ### Next milestone
 Study CloudFront error handling and understand how to diagnose website delivery failures.
+
+## Day 18 — CloudFront Error Handling and Troubleshooting
+
+### Objective
+Investigate HTTP responses and understand how CloudFront delivers content from a private S3 bucket.
+
+### Tests performed
+
+1. Checked the CloudFront homepage response using `curl.exe -I`.
+2. Requested a deliberately missing file using `curl.exe -i`.
+3. Verified that `index.html` and `styles.css` exist in the S3 bucket.
+4. Tested a missing S3 object using `aws s3api head-object`.
+5. Verified the CloudFront distribution status and default root object.
+6. Used `curl.exe -v` to inspect connection and response details.
+
+### Key concepts learned
+
+- HTTP 200 indicates a successful request.
+- HTTP 403 indicates that access was denied.
+- HTTP 404 indicates that a resource was not found.
+- HTTP 503 indicates that a service is temporarily unavailable.
+- A private S3 bucket may return 403 for a missing object when the requester cannot list the bucket.
+- CloudFront uses Origin Access Control (OAC) to securely retrieve content from the private S3 bucket.
+- CloudFront caching can affect how quickly website changes become visible.
+
+### My test results
+
+- Homepage HTTP status: [Insert actual result]
+- Missing CloudFront file HTTP status: [Insert actual result]
+- S3 index.html object check: [Success/Failure]
+- S3 styles.css object check: [Success/Failure]
+- Missing S3 object check: [Expected failure/Other]
+- CloudFront distribution status: [Insert actual result]
+
+### Security observation
+
+The S3 bucket remains private. I did not enable public access or weaken the bucket policy to troubleshoot website delivery.
+
+### Conclusion
+
+I practised diagnosing website delivery issues by checking HTTP response codes, CloudFront distribution status, S3 object existence and connection details. I now understand why an HTTP error should be investigated before changing infrastructure permissions.
