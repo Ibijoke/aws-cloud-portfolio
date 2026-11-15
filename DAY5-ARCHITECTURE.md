@@ -178,3 +178,48 @@ The S3 bucket remains private. I did not enable public access or weaken the buck
 ### Conclusion
 
 I practised diagnosing website delivery issues by checking HTTP response codes, CloudFront distribution status, S3 object existence and connection details. I now understand why an HTTP error should be investigated before changing infrastructure permissions.
+
+
+## Day 19 — CloudFront Caching and Invalidation
+
+### Objective
+Understand how CloudFront caches website content and how to refresh cached objects after website updates.
+
+### Activities completed
+
+1. Checked CloudFront homepage and CSS response headers.
+2. Inspected the CloudFront default cache behaviour and cache policy.
+3. Learned about cache hits, cache misses and TTL.
+4. Added a harmless comment to the website CSS file.
+5. Uploaded the updated CSS file to the private S3 bucket.
+6. Created a CloudFront invalidation for `/styles.css`.
+7. Checked the invalidation status until it completed.
+8. Verified that CloudFront delivered the updated CSS file.
+
+### Key concepts learned
+
+- Caching stores copies of website content at CloudFront edge locations.
+- A cache hit means CloudFront can serve a valid cached copy.
+- A cache miss means CloudFront needs to retrieve the content from its origin.
+- TTL determines how long content can remain fresh in the cache.
+- CloudFront invalidation removes specified cached objects.
+- Invalidation does not delete the original S3 objects.
+- Targeted invalidations are preferable to invalidating the entire distribution unnecessarily.
+
+### Test results
+
+- CloudFront homepage response: [HTTP/1.1 200 OK]
+- CSS response: [HTTP/1.1 200 OK]
+- Cache policy inspected: [Yes]
+- CSS uploaded to S3: [Success]
+- Invalidation created: [Success]
+- Invalidation status: [Completed]
+- Updated CSS verified through CloudFront: [Yes]
+
+### Security observation
+
+The S3 bucket remains private. CloudFront continues to access S3 through Origin Access Control (OAC). No public bucket access was enabled.
+
+### Conclusion
+
+I learned how CloudFront caching improves website delivery and how invalidation can be used to make updated content available to visitors. I also practised using AWS CLI to create and verify invalidation requests.
