@@ -223,3 +223,64 @@ The S3 bucket remains private. CloudFront continues to access S3 through Origin 
 ### Conclusion
 
 I learned how CloudFront caching improves website delivery and how invalidation can be used to make updated content available to visitors. I also practised using AWS CLI to create and verify invalidation requests.
+
+
+
+## Day 20 — GitHub Actions and Continuous Integration
+
+### Objective
+Introduced GitHub Actions and created an automated Terraform validation workflow.
+
+### Workflow
+Created `.github/workflows/terraform-check.yml`.
+
+The workflow runs when:
+- Code is pushed to the main branch.
+- A pull request targets the main branch.
+- The workflow is manually started.
+
+### Automated checks
+1. Checkout repository.
+2. Set up Terraform.
+3. Check Terraform formatting.
+4. Initialize Terraform without a remote backend.
+5. Validate Terraform configuration.
+
+### Security
+The workflow does not require AWS credentials because it performs static Terraform validation only. It does not deploy or modify AWS resources.
+
+### Result
+Record the workflow run result:
+- [ ] Successful
+- [ ] Failed — troubleshooting required
+
+
+## Day 21 — Secure AWS Authentication with GitHub OIDC
+
+### Objective
+Configured GitHub Actions to authenticate with AWS securely using OpenID Connect.
+
+### IAM configuration
+- Created or verified the GitHub OIDC identity provider.
+- Created CloudPortfolioGitHubActionsRole.
+- Restricted the trust policy to the aws-cloud-portfolio repository's main branch.
+- Attached CloudPortfolioWebsiteDeploymentPolicy.
+
+### Permissions granted
+- S3 ListBucket
+- S3 PutObject
+- S3 DeleteObject
+- CloudFront CreateInvalidation
+
+### Security
+- No long-term AWS access keys stored in GitHub.
+- Role access restricted through the OIDC trust policy.
+- Permissions limited to the project S3 bucket and CloudFront distribution.
+
+### Result
+- [ ] OIDC provider verified or created.
+- [ ] IAM role created.
+- [ ] Trust policy restricted to repository and branch.
+- [ ] Deployment permissions attached.
+- [ ] Configuration reviewed.
+
