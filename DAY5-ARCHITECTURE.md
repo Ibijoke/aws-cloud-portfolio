@@ -284,3 +284,33 @@ Configured GitHub Actions to authenticate with AWS securely using OpenID Connect
 - [ ] Deployment permissions attached.
 - [ ] Configuration reviewed.
 
+
+
+## Day 22 — Testing AWS OIDC Authentication
+
+### Objective
+Tested secure authentication between GitHub Actions and AWS using OpenID Connect.
+
+### Workflow created
+.github/workflows/aws-oidc-test.yml
+
+### Authentication process
+1. GitHub Actions requested an OIDC identity token.
+2. AWS verified the GitHub identity.
+3. GitHub Actions assumed CloudPortfolioGitHubActionsRole.
+4. AWS issued temporary credentials.
+5. AWS STS confirmed the authenticated identity.
+
+### Verification command
+aws sts get-caller-identity
+
+### Security
+- No long-term AWS access keys stored in GitHub.
+- Authentication uses temporary credentials.
+- IAM trust policy restricts access to the project repository's main branch.
+
+### Result
+- [ ] Workflow triggered.
+- [ ] OIDC authentication successful.
+- [ ] AWS identity verified.
+
