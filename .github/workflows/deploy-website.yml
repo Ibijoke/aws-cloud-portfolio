@@ -1,0 +1,42 @@
+
+name: Deploy Website to AWS
+
+"on":
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  deploy:
+    name: Deploy Website
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials using OIDC
+        uses: aws-actions/configure-aws-credentials@v6.3.0
+        with:
+          role-to-assume: arn:aws:iam::058264072079:role/CloudPortfolioGitHubActionsRole
+          aws-region: ca-central-1
+          role-session-name: GitHubActionsWebsiteDeployment
+
+      - name: Verify AWS identity
+        run: aws sts get-caller-identity
+
+      - name: Upload website files to S3
+        run: |
+          aws s3 sync ./website/ s3://aws-cloud-portfolio-058264072079-website/
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id E26NPC2L85KODN \
+            --paths "/*"
