@@ -35,8 +35,37 @@ jobs:
         run: |
           aws s3 sync ./website/ s3://aws-cloud-portfolio-058264072079-website/
 
+      
       - name: Invalidate CloudFront cache
+        id: invalidate
         run: |
-          aws cloudfront create-invalidation \
+          INVALIDATION_ID=$(aws cloudfront create-invalidation \
             --distribution-id E26NPC2L85KODN \
-            --paths "/*"
+            --paths "/*" \
+            --query 'Invalidation.Id' \
+            --output text)
+
+          echo "Invalidation ID: $INVALIDATION_ID"
+          echo "invalidation_id=$INVALIDATION_ID" >> "$GITHUB_OUTPUT"
+
+      - name: Wait for CloudFront invalidation
+        run: |
+          aws cloudfront wait invalidation-completed \
+            --distribution-id E26NPC2L85KODN \
+            --id "${{ steps.invalidate.outputs.invalidation_id }}"
+
+      - name: Verify website deployment
+        run: |
+          echo "Checking website availability..."
+
+          curl --fail --silent --show-error \
+            https://dxlisw2u97auo.cloudfront.net/ \
+            -o response.html
+
+          if grep -qi "<html" response.html; then
+            echo "SUCCESS: Website is accessible and HTML content was received."
+          else
+            echo "ERROR: Expected HTML content was not found."
+            exit 1
+          fi
+
